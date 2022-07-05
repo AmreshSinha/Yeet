@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  gmeet-clone:
+    build: .
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.paasifycomingsoon-secure.entrypoints=websecure"
+      - "traefik.http.routers.paasifycomingsoon-secure.rule=Host(`gmeetclone.x-axis.me`)"
+      - "traefik.http.routers.paasifycomingsoon-secure.service=paasifycomingsoon-service"
+      - "traefik.http.services.paasifycomingsoon-service.loadbalancer.server.port=3000"
+
+networks:
+  proxy:
+    external: true
