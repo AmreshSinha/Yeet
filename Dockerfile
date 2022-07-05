@@ -1,7 +1,7 @@
 FROM node:16-alpine
 
 ENV NODE_ENV production
-ENV NODE_OPTIONS "--max-old-space-size=8192"
+ENV NODE_OPTIONS "--max-old-space-size=2048"
 
 COPY package*.json ./
 
